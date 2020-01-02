@@ -3,10 +3,14 @@
     "name": "Conways Game of Life",
     "icons": [
       {
-        "src": "/images/icon-106.png",
+        "src": "/images/icon-192.png",
         "type": "image/png",
-        "sizes": "106x97"
-      }
+        "sizes": "192x192"
+      },
+      {
+        "src": "/images/icon-512.png",
+        "type": "image/png",
+        
     ],
     "start_url": "/golpwa/",
     "background_color": "#FFFFFF",
