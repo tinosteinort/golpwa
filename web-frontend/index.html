@@ -1,0 +1,23 @@
+<html>
+<head>
+    <title>Game Of Life</title>
+    <meta charset="UTF-8"/>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <h1>Game Of Live</h1>
+    <table id="boardTable"></table>
+    <hr>
+    <button id="nextStepBtn" alt="Execute next step">Next</button>
+    <button id="playBtn" alt="Executes the next steps automatically">Play</button>
+    <button id="pauseBtn" alt="Pause the execution">Pause</button>
+    <button id="clearBtn" alt="Clear the board">Clear</button>
+    <select id="boardType">
+        <option value="FIXED">Fixed Board</option>
+        <option value="TORUS" selected>Torus Board</option>
+    </select>
+    <div id="emInPixel" style="height:0;width:0;outline:none;border:none;padding:none;margin:none;"></div>
+    <script type="module" src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{
+  "name": "web-typescript-template",
+  "version": "1.0.0",
+  "description": "A template for a frontend with HTML and plain typescript",
+  "private": true,
+  "scripts": {
+    "clean": "node \"scripts/clean.js\"",
+    "tsc": "npx tsc",
+    "pack": "npx webpack --config \"webpack.config.js\"",
+    "build": "npm run clean && npm run tsc && npm run lint && npm run pack",
+    "serve": "npx ws -d \"web-frontend\"",
+    "dev": "npm run build && npx concurrently \"npm run tsc -- --watch\" \"npm run pack -- --watch\" \"npm run serve\"",
+    "lint": "npx eslint src/**.ts",
+    "test": "echo 'test'"
+  },
+  "keywords": [
+    "web",
+    "html",
+    "template",
+    "plain",
+    "typescript",
+    "webpack"
+  ],
+  "author": "Tino Steinort",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "2.9.0",
+    "@typescript-eslint/parser": "2.9.0",
+    "concurrently": "5.0.0",
+    "eslint": "6.7.2",
+    "local-web-server": "3.0.7",
+    "rimraf": "3.0.0",
+    "typescript": "3.7.2",
+    "webpack": "4.41.2",
+    "webpack-cli": "3.3.10"
+  }
+}
