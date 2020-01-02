@@ -9,8 +9,8 @@
       },
       {
         "src": "/images/icon-512.png",
-        "type": "image/png",
-        
+        "type": "image/png"
+      }
     ],
     "start_url": "/golpwa/",
     "background_color": "#FFFFFF",
