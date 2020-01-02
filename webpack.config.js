@@ -4,7 +4,7 @@ module.exports = {
   entry: './build/js/index.js',
   output: {
     filename: 'index.js',
-    path: path.resolve(__dirname, 'web-frontend/js'),
+    path: path.resolve(__dirname, 'docs/js'),
   },
   mode: 'production'
 };

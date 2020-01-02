@@ -1,4 +1,4 @@
 var rimraf = require("rimraf");
 
 rimraf.sync("./build");
-rimraf.sync("./web-frontend/js");
+rimraf.sync("./docs/js");
