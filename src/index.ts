@@ -58,12 +58,15 @@ function onTableClick(this: HTMLTableElement, ev: MouseEvent): void {
 boardUi.addEventListener("click", onTableClick);
 
 
-board.addCell(1, 0);
-board.addCell(2, 1);
-board.addCell(0, 2);
-board.addCell(1, 2);
-board.addCell(2, 2);
-boardUi.apply(board);
+function createAndShowInitialFigure(): void {
+    board.addCell(1, 0);
+    board.addCell(2, 1);
+    board.addCell(0, 2);
+    board.addCell(1, 2);
+    board.addCell(2, 2);
+    boardUi.apply(board);
+}
+createAndShowInitialFigure();
 
 
 let intervalId = -1;
@@ -101,6 +104,7 @@ function changeBoardType(this: HTMLSelectElement): void {
         boardType = newBoardType;
         board = createBoard(boardType);
     }
+    createAndShowInitialFigure();
 }
 
 (document.getElementById("nextStepBtn") as HTMLButtonElement).addEventListener("click", nextStep);

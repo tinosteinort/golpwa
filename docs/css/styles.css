@@ -1,5 +1,5 @@
 h1 {
-    font-size: 4em;
+    font-size: 3em;
 }
 
 table {
@@ -16,9 +16,6 @@ td {
     height: 3em;
 }
 
-button, select {
-    font-size: 3em;
-}
 
 .alive {
     background-color: black;
