@@ -9,7 +9,7 @@ enum BoardType {
 
 function getEmInPixel(): number {
     const div = document.getElementById("emInPixel") as HTMLDivElement;
-    div.style.height = "2em";
+    div.style.height = "3em";
     return div.offsetHeight;
 }
 function calculateCellsX(): number {
@@ -19,7 +19,7 @@ function calculateCellsX(): number {
 }
 function calculateCellsY(): number {
     const numberOfPixelIn1em = getEmInPixel();
-    const cellCountY = Math.floor((window.innerHeight - 200) / numberOfPixelIn1em);
+    const cellCountY = Math.floor((window.innerHeight - 250) / numberOfPixelIn1em);
     return cellCountY;
 }
 

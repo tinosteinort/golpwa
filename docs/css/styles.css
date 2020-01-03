@@ -1,5 +1,5 @@
 h1 {
-    font-size: 3em;
+    font-size: 4em;
 }
 
 table {
@@ -12,12 +12,12 @@ table {
 
 td {
     border: solid 1px;
-    width: 2em;
-    height: 2em;
+    width: 3em;
+    height: 3em;
 }
 
 button, select {
-    font-size: 2em;
+    font-size: 3em;
 }
 
 .alive {
