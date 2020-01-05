@@ -1,13 +1,9 @@
-h1 {
-    font-size: 3em;
-}
-
 table {
-	border: 0;
+    border: 0;
     border-collapse: collapse;
     border-spacing: 0;
     margin: auto;
-	padding: 0;
+    padding: 0;
 }
 
 td {
@@ -20,11 +16,11 @@ td {
     background-color: black;
 }
 
-.emInPixel {
-    height:0;
-    width:0;
-    outline:none;
-    border:none;
-    padding:none;
-    margin:none;
+.emMeasure {
+    height: 0;
+    width: 0;
+    outline: none;
+    border: none;
+    padding: none;
+    margin: none;
 }

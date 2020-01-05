@@ -11,7 +11,7 @@ export class BoardUi {
 
     private buildBoard(width: number, height: number): string {
         let table = "";
-        table += "<table><tbody>";
+        table += "<tbody>";
         for (let y = 0; y < height; y++) {
             table += "<tr>"
             for (let x = 0; x < width; x++) {
@@ -19,7 +19,7 @@ export class BoardUi {
             }
             table += "</tr>"
         }
-        table += "</tbody></table>";
+        table += "</tbody>";
         return table;
     }
     
