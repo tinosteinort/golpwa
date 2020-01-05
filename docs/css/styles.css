@@ -16,7 +16,15 @@ td {
     height: 1em;
 }
 
-
 .alive {
     background-color: black;
+}
+
+.emInPixel {
+    height:0;
+    width:0;
+    outline:none;
+    border:none;
+    padding:none;
+    margin:none;
 }

@@ -19,7 +19,7 @@ function calculateCellsX(): number {
 }
 function calculateCellsY(): number {
     const numberOfPixelIn1em = getEmInPixel();
-    const cellCountY = Math.floor((window.innerHeight - 200) / numberOfPixelIn1em);
+    const cellCountY = Math.floor((window.innerHeight - 150) / numberOfPixelIn1em);
     return cellCountY;
 }
 
