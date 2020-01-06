@@ -16,7 +16,7 @@
     "start_url": "/golpwa/",
     "background_color": "#FFFFFF",
     "display": "standalone",
-    "scope": "/",
+    "scope": "/golpwa/",
     "theme_color": "#FFFFFF"
   }
   
