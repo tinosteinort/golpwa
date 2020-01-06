@@ -9,13 +9,14 @@
       },
       {
         "src": "/images/icon-512.png",
-        "type": "image/png"
+        "type": "image/png",
+        "sizes": "512x512"
       }
     ],
-    "start_url": "/golpwa/",
+    "start_url": "/golpwa",
     "background_color": "#FFFFFF",
     "display": "standalone",
-    "scope": "/golpwa/",
+    "scope": "/golpwa",
     "theme_color": "#FFFFFF"
   }
   

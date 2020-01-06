@@ -1,6 +1,16 @@
 import { FixedBoard, Board, TorusBoard } from "./gol-core";
 import { BoardUi } from "./board-ui";
 
+function registerServiceWorker(): void {
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+            .then((registration) =>
+                console.log(`Service Worker registration complete, scope: '${registration.scope}'`))
+            .catch((error) =>
+                console.log(`Service Worker registration failed with error: '${error}'`));
+    }
+}
+registerServiceWorker();
 
 enum BoardType {
     TORUS = "TORUS",
