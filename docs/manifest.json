@@ -13,10 +13,10 @@
         "sizes": "512x512"
       }
     ],
-    "start_url": "/golpwa",
+    "start_url": "/golpwa/",
     "background_color": "#FFFFFF",
     "display": "standalone",
-    "scope": "/golpwa",
+    "scope": "/",
     "theme_color": "#FFFFFF"
   }
   
