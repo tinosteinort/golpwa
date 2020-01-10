@@ -14,21 +14,23 @@
 <body>
     <div class="pure-menu pure-menu-horizontal">
         <span class="pure-menu-heading">Game Of Life</span>
+    </div>
+    <form class="pure-form" action="javascript:void(0);">
+        <select id="boardType">
+            <option value="FIXED">Fixed Board</option>
+            <option value="TORUS" selected>Torus Board</option>
+        </select>
+    </form>
+    <div class="pure-g">
+        <table class="pure-u-1" id="boardTable"></table>
+    </div>
+    <div class="pure-menu pure-menu-horizontal">
         <ul class="pure-menu-list">
             <li class="pure-menu-item"><button class="pure-button" id="nextStepBtn" alt="Execute next step">Next</button></li>
             <li class="pure-menu-item"><button class="pure-button" id="playBtn" alt="Executes the next steps automatically">Play</button></li>
             <li class="pure-menu-item"><button class="pure-button" id="pauseBtn" alt="Pause the execution">Pause</button></li>
             <li class="pure-menu-item"><button class="pure-button" id="clearBtn" alt="Clear the board">Clear</button></li>
         </ul>
-        <form class="pure-form" action="javascript:void(0);">
-            <select id="boardType">
-                <option value="FIXED">Fixed Board</option>
-                <option value="TORUS" selected>Torus Board</option>
-            </select>
-        </form>
-    </div>
-    <div class="pure-g">
-        <table class="pure-u-1" id="boardTable"></table>
     </div>
     <div class="emMeasure" id="emInPixel"></div>
     <script type="module" src="js/index.js"></script>
