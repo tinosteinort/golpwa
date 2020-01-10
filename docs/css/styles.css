@@ -1,3 +1,14 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main {
+    display: flex;
+    flex: 1 1 auto;
+}
+
 table {
     border: 0;
     border-collapse: collapse;
@@ -10,6 +21,10 @@ td {
     border: solid 1px;
     width: 1em;
     height: 1em;
+}
+
+.header, .footer {
+    flex: 0 0 auto;
 }
 
 .alive {
