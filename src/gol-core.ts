@@ -162,8 +162,9 @@ export abstract class Board {
         return this.cellIsAlive(new Cell(x, y));
     }
 
-    public addCell(x: number, y: number): void {
-        this.livingCells.push(new Cell(x, y))
+    public addCell(x: number, y: number): Board {
+        this.livingCells.push(new Cell(x, y));
+        return this;
     }
 
     private indexOfCell(cell: Cell): number {
@@ -177,15 +178,17 @@ export abstract class Board {
         return -1;
     }
 
-    public removeCell(x: number, y: number): void {
+    public removeCell(x: number, y: number): Board {
         const index = this.indexOfCell(new Cell(x, y));
         if (index > -1) {
             this.livingCells.splice(index, 1);
         }
+        return this;
     }
 
-    public clear(): void {
+    public clear(): Board {
         this.livingCells.splice(0, this.livingCells.length);
+        return this;
     }
 
     public getLivingCells(): Array<Cell> {

@@ -1,5 +1,7 @@
 import { FixedBoard, Board, TorusBoard } from "./gol-core";
 import { BoardUi } from "./board-ui";
+import { elementById, firstElementByClassName } from "./html-accessor";
+import { calculateCellsX, calculateCellsY } from "./table-size-calculator";
 
 function registerServiceWorker(): void {
     if ('serviceWorker' in navigator) {
@@ -17,38 +19,14 @@ enum BoardType {
     FIXED = "FIXED"
 }
 
-function getEmInPixel(): number {
-    const div = document.getElementById("emInPixel") as HTMLDivElement;
-    div.style.height = "1em";
-    return div.offsetHeight;
-}
-function getDivWidth(): number {
-    const div = document.getElementsByClassName("main")[0] as HTMLDivElement;
-    return div.clientWidth;
-}
-function getDivHeight(): number {
-    const div = document.getElementsByClassName("main")[0] as HTMLDivElement;
-    return div.clientHeight;
-}
-function calculateCellsX(): number {
-    const numberOfPixelIn1em = getEmInPixel();
-    const cellCountX = Math.floor(getDivWidth() / numberOfPixelIn1em) - 4;
-    return cellCountX;
-}
-function calculateCellsY(): number {
-    const numberOfPixelIn1em = getEmInPixel();
-    const cellCountY = Math.floor(getDivHeight() / numberOfPixelIn1em) - 4;
-    return cellCountY;
-}
-
 const width = calculateCellsX();
 const height = calculateCellsY();
 let boardType = BoardType.TORUS;
 
 function createBoard(type: BoardType): Board {
-    return type == BoardType.TORUS 
-            ? new TorusBoard(width, height)
-            : new FixedBoard(width, height);
+    return type == BoardType.TORUS
+        ? new TorusBoard(width, height)
+        : new FixedBoard(width, height);
 }
 
 const boardUi = new BoardUi("boardTable", width, height);
@@ -77,11 +55,11 @@ boardUi.addEventListener("click", onTableClick);
 
 
 function createAndShowInitialFigure(): void {
-    board.addCell(1, 0);
-    board.addCell(2, 1);
-    board.addCell(0, 2);
-    board.addCell(1, 2);
-    board.addCell(2, 2);
+    board.addCell(1, 0)
+        .addCell(2, 1)
+        .addCell(0, 2)
+        .addCell(1, 2)
+        .addCell(2, 2);
     boardUi.apply(board);
 }
 createAndShowInitialFigure();
@@ -125,8 +103,8 @@ function changeBoardType(this: HTMLSelectElement): void {
     createAndShowInitialFigure();
 }
 
-(document.getElementById("nextStepBtn") as HTMLButtonElement).addEventListener("click", nextStep);
-(document.getElementById("playBtn") as HTMLButtonElement).addEventListener("click", play);
-(document.getElementById("pauseBtn") as HTMLButtonElement).addEventListener("click", pause);
-(document.getElementById("clearBtn") as HTMLButtonElement).addEventListener("click", clearBoard);
-(document.getElementById("boardType") as HTMLSelectElement).addEventListener("change", changeBoardType);
+(elementById("nextStepBtn") as HTMLButtonElement).addEventListener("click", nextStep);
+(elementById("playBtn") as HTMLButtonElement).addEventListener("click", play);
+(elementById("pauseBtn") as HTMLButtonElement).addEventListener("click", pause);
+(elementById("clearBtn") as HTMLButtonElement).addEventListener("click", clearBoard);
+(elementById("boardType") as HTMLSelectElement).addEventListener("change", changeBoardType);

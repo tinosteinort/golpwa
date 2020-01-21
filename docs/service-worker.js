@@ -10,7 +10,7 @@ var GolServiceWorker = /** @class */ (function () {
         return location.hostname == "localhost";
     };
     GolServiceWorker.onInstalled = function (event) {
-        event.waitUntil(caches.open('v0.1').then(function (cache) {
+        event.waitUntil(caches.open('v0.2').then(function (cache) {
             var prefix = GolServiceWorker.isLocalHost() ? "" : "/golpwa";
             return cache.addAll([
                 prefix + '/',
@@ -29,7 +29,7 @@ var GolServiceWorker = /** @class */ (function () {
     GolServiceWorker.onFetched = function (event) {
         event.respondWith(caches.match(event.request).then(function (matchResponse) {
             return matchResponse || fetch(event.request).then(function (fetchResponse) {
-                return caches.open('v0.1').then(function (cache) {
+                return caches.open('v0.2').then(function (cache) {
                     cache.put(event.request, fetchResponse.clone());
                     return fetchResponse;
                 });

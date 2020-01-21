@@ -1,12 +1,13 @@
 import { Board } from "./gol-core";
+import { elementById, setHtmlContent } from "./html-accessor";
 
 export class BoardUi {
 
     private table: HTMLTableElement;
 
     constructor(private readonly tableId: string, private width: number, private height: number) {
-        this.table = document.getElementById(tableId) as HTMLTableElement;
-        this.table.innerHTML = this.buildBoard(width, height);
+        this.table = elementById(tableId) as HTMLTableElement;
+        setHtmlContent(this.table, this.buildBoard(width, height));
     }
 
     private buildBoard(width: number, height: number): string {
@@ -24,7 +25,7 @@ export class BoardUi {
     }
     
     private getCell(x: number, y: number): HTMLElement {
-        return document.getElementById(`cell-${x}-${y}`) as HTMLElement;
+        return elementById(`cell-${x}-${y}`) as HTMLElement;
     }
     
     private setAlive(x: number, y: number): void {
