@@ -11,7 +11,7 @@ class GolServiceWorker {
 
     public static onInstalled = (event: any): void => {
         event.waitUntil(
-            caches.open('v0.2').then((cache) => {
+            caches.open('v0.3').then((cache) => {
                 const prefix = GolServiceWorker.isLocalHost() ? "" : "/golpwa";
                 return cache.addAll([
                     prefix + '/',
@@ -33,7 +33,7 @@ class GolServiceWorker {
         event.respondWith(
             caches.match(event.request).then((matchResponse) => {
                 return matchResponse || fetch(event.request).then((fetchResponse) => {
-                    return caches.open('v0.2').then((cache) => {
+                    return caches.open('v0.3').then((cache) => {
                         cache.put(event.request, fetchResponse.clone());
                         return fetchResponse;
                     });
