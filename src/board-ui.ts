@@ -1,57 +1,60 @@
 import { Board } from "./gol-core";
 import { elementById, setHtmlContent } from "./html-accessor";
 
-export class BoardUi {
 
-    private table: HTMLTableElement;
-
-    constructor(private readonly tableId: string, private width: number, private height: number) {
-        this.table = elementById(tableId) as HTMLTableElement;
-        setHtmlContent(this.table, this.buildBoard(width, height));
-    }
-
-    private buildBoard(width: number, height: number): string {
-        let table = "";
-        table += "<tbody>";
-        for (let y = 0; y < height; y++) {
-            table += "<tr>"
-            for (let x = 0; x < width; x++) {
-                table += `<td id="cell-${x}-${y}"></td>`;
-            }
-            table += "</tr>"
+function buildBoardHtml(width: number, height: number): string {
+    let table = "";
+    table += "<tbody>";
+    for (let y = 0; y < height; y++) {
+        table += "<tr>"
+        for (let x = 0; x < width; x++) {
+            table += `<td id="cell-${x}-${y}"></td>`;
         }
-        table += "</tbody>";
-        return table;
+        table += "</tr>"
     }
-    
-    private getCell(x: number, y: number): HTMLElement {
-        return elementById(`cell-${x}-${y}`) as HTMLElement;
-    }
-    
-    private setAlive(x: number, y: number): void {
-        const cell = this.getCell(x, y);
-        cell.classList.add("alive");
-    }
-    private setDead(x: number, y: number): void {
-        const cell = this.getCell(x, y);
-        cell.classList.remove("alive");
-    }
-    private setAllDead(width: number, height: number): void {
-        for (let y = 0; y < height; y++) {
-            for (let x = 0; x < width; x++) {
-                this.setDead(x, y);
-            }
+    table += "</tbody>";
+    return table;
+}
+
+function getCell(x: number, y: number): HTMLElement {
+    return elementById(`cell-${x}-${y}`) as HTMLElement;
+}
+
+function setAlive(x: number, y: number): void {
+    getCell(x, y).classList.add("alive");
+}
+function setDead(x: number, y: number): void {
+    getCell(x, y).classList.remove("alive");
+}
+function setAllDead(width: number, height: number): void {
+    for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+            setDead(x, y);
         }
     }
+}
 
-    public apply(board: Board): void {
-        this.setAllDead(board.width, board.height);
-        for (const cell of board.getLivingCells()) {
-            this.setAlive(cell.x, cell.y);
+export function applyToUi(board: Board): void {
+    setAllDead(board.width, board.height);
+    for (const cell of board.getLivingCells()) {
+        setAlive(cell.x, cell.y);
+    }
+    setHtmlContent(elementById("generationCounter"), `${board.generationCount}`);
+}
+
+export function initTableUi(width: number, height: number, onCellClick: (x: number, y: number) => void): void {
+    const table = elementById("boardTable") as HTMLTableElement;
+    setHtmlContent(table, buildBoardHtml(width, height));
+
+    function onTableClick(this: HTMLTableElement, ev: MouseEvent): void {
+        const targetId: string = (ev.target as Element).id;
+        const startsWithCell = targetId.lastIndexOf("cell-", 0) == 0;
+        if (startsWithCell) {
+            const xStr = (targetId.match(/(?<=\-)\d+(?=(\-))/) as RegExpMatchArray)[0];
+            const yStr = (targetId.match(/(?<=\-)\d+$/) as RegExpMatchArray)[0];
+            onCellClick(parseInt(xStr), parseInt(yStr));
         }
     }
 
-    public addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void {
-        this.table.addEventListener(type, listener, options);
-    }
+    table.addEventListener("click", onTableClick);
 }

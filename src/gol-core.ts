@@ -84,6 +84,7 @@ export abstract class Board {
     private statusCalculator = new StatusCalculator();
     private livingCells: Array<Cell> = [];
     private newLivingCells: Array<Cell> = [];
+    private _generationCount = 1;
 
     constructor(public readonly width: number, public readonly height: number) {
         
@@ -95,6 +96,7 @@ export abstract class Board {
         this.calculateNextStatusOfCells(Status.DEAD, deadNeighbours);
 
         this.updateLivingCells();
+        this._generationCount++;
     }
     
     private calculateNextStatusOfCells(currentStatus: Status, cells: Array<Cell>): void {
@@ -188,11 +190,16 @@ export abstract class Board {
 
     public clear(): Board {
         this.livingCells.splice(0, this.livingCells.length);
+        this._generationCount = 0;
         return this;
     }
 
     public getLivingCells(): Array<Cell> {
         return this.livingCells;
+    }
+
+    get generationCount(): number {
+        return this._generationCount;
     }
 }
 

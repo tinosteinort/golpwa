@@ -1,6 +1,6 @@
 import { FixedBoard, Board, TorusBoard } from "./gol-core";
-import { BoardUi } from "./board-ui";
-import { elementById, firstElementByClassName } from "./html-accessor";
+import { initTableUi, applyToUi } from "./board-ui";
+import { elementById } from "./html-accessor";
 import { calculateCellsX, calculateCellsY } from "./table-size-calculator";
 
 function registerServiceWorker(): void {
@@ -28,9 +28,8 @@ function createBoard(type: BoardType): Board {
         ? new TorusBoard(width, height)
         : new FixedBoard(width, height);
 }
-
-const boardUi = new BoardUi("boardTable", width, height);
 let board: Board = createBoard(boardType);
+
 
 function onCellClick(x: number, y: number): void {
     const alive = board.coordinateIsAliveCell(x, y);
@@ -40,19 +39,8 @@ function onCellClick(x: number, y: number): void {
     else {
         board.addCell(x, y);
     }
-    boardUi.apply(board);
+    applyToUi(board);
 }
-function onTableClick(this: HTMLTableElement, ev: MouseEvent): void {
-    const targetId: string = (ev.target as Element).id;
-    const startsWithCell = targetId.lastIndexOf("cell-", 0) == 0;
-    if (startsWithCell) {
-        const xStr = (targetId.match(/(?<=\-)\d+(?=(\-))/) as RegExpMatchArray)[0];
-        const yStr = (targetId.match(/(?<=\-)\d+$/) as RegExpMatchArray)[0];
-        onCellClick(parseInt(xStr), parseInt(yStr));
-    }
-}
-boardUi.addEventListener("click", onTableClick);
-
 
 function createAndShowInitialFigure(): void {
     board.addCell(1, 0)
@@ -60,8 +48,10 @@ function createAndShowInitialFigure(): void {
         .addCell(0, 2)
         .addCell(1, 2)
         .addCell(2, 2);
-    boardUi.apply(board);
+    applyToUi(board);
 }
+
+initTableUi(width, height, onCellClick);
 createAndShowInitialFigure();
 
 
@@ -72,7 +62,7 @@ function simulationIsRunning(): boolean {
 
 function nextStep(): void {
     board.executeCycle();
-    boardUi.apply(board);
+    applyToUi(board);
 }
 function play(): void {
     if (!simulationIsRunning()) {
@@ -90,7 +80,7 @@ function pause(): void {
 function clearBoard(): void {
     pause();
     board.clear();
-    boardUi.apply(board);
+    applyToUi(board);
 }
 function changeBoardType(this: HTMLSelectElement): void {
     const newBoardType = this.value as BoardType;
