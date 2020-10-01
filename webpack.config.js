@@ -8,9 +8,11 @@ module.exports = {
     path: path.resolve(__dirname, 'docs/js'),
   },
   plugins: [
-    new CopyWebpackPlugin([
-        { from: 'build/js/static', to: '../../docs' }
-    ])
+    new CopyWebpackPlugin({
+        patterns: [
+          { from: 'build/js/static', to: '../../docs' }
+        ]
+    })
   ],
   mode: 'production'
 };
