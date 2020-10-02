@@ -1,3 +1,5 @@
+[![GithubPages](https://github.com/tinosteinort/golpwa/workflows/deploy-to-github-pages/badge.svg)](https://github.com/tinosteinort/golpwa/actions?query=workflow%3A%22deploy-to-github-pages%22)
+
 # Conways Game Of Live
 
 The `Game of Live` as standalone PWA with a Web App Manifest. Have
