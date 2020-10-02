@@ -1,6 +1,7 @@
 # Conways Game Of Live
 
-The `Game of Live` as standalone PWA with a Web App Manifest.
+The `Game of Live` as standalone PWA with a Web App Manifest. Have
+a look at the application: https://tinosteinort.github.io/golpwa
 
 
 ## Development
@@ -16,7 +17,7 @@ npm run dev
 The local test webserver is reachable at `http://localhost:8000/`. You have to refresh
  the browser by your own to execute the new transpiled code.
 
- __Attention: the `site/js` and `build` folders will be genereated. Dont't modify code within manually.__
+ > :warning: `site/js` and `build` folders will be genereated. Dont't modify code within manually.
 
 
 ## Distributing
