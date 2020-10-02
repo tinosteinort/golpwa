@@ -4,10 +4,10 @@ on:
     branches:
       - master
 jobs:
-  deploy:
+  build-and-deploy-to-github-pages:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎️
+      - name: Checkout
         uses: actions/checkout@v2
         with:
           persist-credentials: false
