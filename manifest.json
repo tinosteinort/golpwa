@@ -1,0 +1,22 @@
+{
+    "short_name": "GoL",
+    "name": "Conways Game of Life",
+    "icons": [
+      {
+        "src": "/golpwa/images/icon-192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "/golpwa/images/icon-512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "/golpwa/",
+    "background_color": "#FFFFFF",
+    "display": "standalone",
+    "scope": "/golpwa/",
+    "theme_color": "#FFFFFF"
+  }
+  
