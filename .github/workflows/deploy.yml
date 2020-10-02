@@ -27,6 +27,6 @@ jobs:
         with:
           BASE_BRANCH: master
           BRANCH: gh-pages
-          FOLDER: dist
+          FOLDER: site
           CLEAN: true
           SSH: true
