@@ -1,4 +1,5 @@
 node_modules
 build
-dist
+site/js
+site/service-worker.js
 .idea

@@ -1,5 +1,5 @@
 var rimraf = require("rimraf");
 
 rimraf.sync("./build");
-rimraf.sync("./docs/js");
-rimraf.sync("./docs/service-worker.js");
+rimraf.sync("./site/js");
+rimraf.sync("./site/service-worker.js");
