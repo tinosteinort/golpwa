@@ -5,12 +5,12 @@ module.exports = {
   entry: './build/js/index.js',
   output: {
     filename: 'index.js',
-    path: path.resolve(__dirname, 'docs/js'),
+    path: path.resolve(__dirname, 'site/js'),
   },
   plugins: [
     new CopyWebpackPlugin({
         patterns: [
-          { from: 'build/js/static', to: '../../docs' }
+          { from: 'build/js/static', to: '../../site' }
         ]
     })
   ],

@@ -8,7 +8,7 @@
     "tsc": "npx tsc",
     "pack": "npx webpack --config \"webpack.config.js\"",
     "build": "npm run clean && npm run tsc && npm run lint && npm run pack",
-    "serve": "npx ws -d \"docs\"",
+    "serve": "npx ws -d \"dist\"",
     "dev": "npm run build && npx concurrently \"npm run tsc -- --watch\" \"npm run pack -- --watch\" \"npm run serve\"",
     "lint": "npx eslint src/**.ts",
     "test": "echo 'test'"
