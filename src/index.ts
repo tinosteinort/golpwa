@@ -66,7 +66,7 @@ function nextStep(): void {
 }
 function play(): void {
     if (!simulationIsRunning()) {
-        intervalId = setInterval(() => {
+        intervalId = window.setInterval(() => {
             nextStep();
         }, 200);
     }
